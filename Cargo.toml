@@ -1,0 +1,33 @@
+[package]
+name = "codevis"
+version = "1.0.0"
+edition = "2021"
+description = "Codebase Timeline Visualizer - Make Git history visual and interactive"
+license = "MIT"
+
+[[bin]]
+name = "codevis"
+path = "src/main.rs"
+
+[dependencies]
+git2 = { version = "0.21", default-features = false, features = ["vendored-libgit2"] }
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+regex = "1"
+axum = "0.7"
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+tower-http = { version = "0.5", features = ["fs", "cors"] }
+rayon = "1"
+ignore = "0.4"
+
+[dev-dependencies]
+tempfile = "3"
+# `ServiceExt::oneshot` — drives the axum Router in tests without binding a port.
+tower = { version = "0.5", features = ["util"] }
+http-body-util = "0.1"
+
+[profile.release]
+opt-level = 3
+lto = true

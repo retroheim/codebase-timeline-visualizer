@@ -1,0 +1,59 @@
+{
+  "_comment": "Shared parity fixture for src/analyzer.rs's contributor_stats/file_stats and frontend/src/lib/as-of.ts's contributorStatsAsOf/fileStatsAsOf — two independently-maintained implementations of the same aggregation logic, kept in sync by both reading this one input and asserting the same expected output. If either side's co-author-crediting logic ever drifts from the other, one of the two tests consuming this fixture fails.",
+  "timeline": [
+    {
+      "timestamp": 1000,
+      "datetime": "1970-01-01T00:16:40+00:00",
+      "commit_hash": "h1000",
+      "author": "Alice",
+      "message": "add a.ts",
+      "files_changed": [
+        { "filename": "a.ts", "old_path": null, "new_path": "a.ts", "change_type": "ADD", "lines_added": 10, "lines_removed": 0 }
+      ],
+      "lines_added": 10,
+      "lines_removed": 0,
+      "cumulative_lines": 10,
+      "cumulative_files": 1,
+      "co_authors": []
+    },
+    {
+      "timestamp": 2000,
+      "datetime": "1970-01-01T00:33:20+00:00",
+      "commit_hash": "h2000",
+      "author": "Bob",
+      "message": "add b.ts",
+      "files_changed": [
+        { "filename": "b.ts", "old_path": null, "new_path": "b.ts", "change_type": "ADD", "lines_added": 5, "lines_removed": 1 }
+      ],
+      "lines_added": 5,
+      "lines_removed": 1,
+      "cumulative_lines": 14,
+      "cumulative_files": 2,
+      "co_authors": [{ "name": "Codesmith", "email": "codesmith-bot@users.noreply.github.com" }]
+    },
+    {
+      "timestamp": 3000,
+      "datetime": "1970-01-01T00:50:00+00:00",
+      "commit_hash": "h3000",
+      "author": "Alice",
+      "message": "update a.ts",
+      "files_changed": [
+        { "filename": "a.ts", "old_path": null, "new_path": "a.ts", "change_type": "MODIFY", "lines_added": 2, "lines_removed": 0 }
+      ],
+      "lines_added": 2,
+      "lines_removed": 0,
+      "cumulative_lines": 16,
+      "cumulative_files": 2,
+      "co_authors": []
+    }
+  ],
+  "expected_contributors": {
+    "Alice": { "commits": 2, "lines_added": 12, "lines_removed": 0, "files_changed": 2 },
+    "Bob": { "commits": 1, "lines_added": 5, "lines_removed": 1, "files_changed": 1 },
+    "Codesmith": { "commits": 1, "lines_added": 5, "lines_removed": 1, "files_changed": 1 }
+  },
+  "expected_file_authors": {
+    "a.ts": ["Alice"],
+    "b.ts": ["Bob", "Codesmith"]
+  }
+}

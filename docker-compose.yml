@@ -1,0 +1,22 @@
+services:
+  codevis:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      # Published on all interfaces by Docker's default. The timeline contains
+      # the analyzed repo's full history including author email addresses — bind
+      # to "127.0.0.1:3001:3001" instead if you don't want that on your network.
+      - "3001:3001"
+    volumes:
+      # Multi-project mode needs to write (registry.json, clones, per-project
+      # timeline.json files), so this is a writable directory mount rather
+      # than the old read-only single-file mount. Docker creates this
+      # directory on first `up` if it doesn't exist yet, but owned by root on
+      # the host — if the container's `app` user then fails to write to it,
+      # run `mkdir -p ./codevis-data && chmod 777 ./codevis-data` once first.
+      - ./codevis-data:/app/data
+    # `--host 0.0.0.0` is required inside a container: the default is loopback,
+    # which is unreachable through a published port.
+    command: ["codevis", "serve", "--host", "0.0.0.0", "--port", "3001", "--data-dir", "/app/data"]
+    restart: unless-stopped

@@ -1,0 +1,40 @@
+# Git
+.git
+.gitignore
+
+# CI/CD
+.github/
+
+# Rust
+target/
+Cargo.lock.orig
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Node.js (for main container)
+node_modules/
+npm-debug.log*
+
+# Documentation build
+docs-build/
+
+# Temporary files
+*.tmp
+*.temp

@@ -1,0 +1,42 @@
+# Rust
+/target/
+Cargo.lock.orig
+
+# Node / frontend
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+frontend/coverage/
+*.tsbuildinfo
+npm-debug.log*
+
+# Coverage reports (cargo-tarpaulin)
+cobertura.xml
+tarpaulin-report.html
+
+# Generated data (produced by `codevis analyze`)
+timeline.json
+timeline-*.json
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local agent scratch state (e.g. ce-optimize experiment logs)
+.context/
+
+# Secrets — never commit these
+*.key
+*.pem
+*.cert
+config.json
+secrets.json
+.env
+.env.local

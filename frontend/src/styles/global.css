@@ -1,0 +1,61 @@
+:root {
+  /* Deep-space / bioluminescence palette. Two deliberate accents: a cool
+     signature color for passive structure (branches, files) and a warm one
+     reserved for anything the user can actually act on (play, scrub, focus).
+     --bloom is a third, used sparingly for "this is the most intense thing
+     on screen" (a leaderboard's #1, a calendar's hottest day) — the same
+     violet the radial tree's own branch-hue palette already produces at
+     certain depths, named here so the analytical views can reach for it
+     without inventing a new color. */
+  --void: #060810;
+  --panel: #0d1424;
+  --thread: #2fe6b8;
+  --spore: #7fb8ff;
+  --flare: #ff8a5c;
+  --bloom: #c792ff;
+  --paper: #e7edf5;
+  --mist: #55617a;
+
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Shared glow language — every view's primary data marks (calendar cells,
+     leaderboard bars, the growth line, treemap borders, commit dots) use one
+     of these so the whole instrument reads as one light source, not five
+     separately-designed widgets bolted together. */
+  --glow-thread: 0 0 10px rgba(47, 230, 184, 0.55);
+  --glow-flare: 0 0 10px rgba(255, 138, 92, 0.55);
+  --glow-bloom: 0 0 10px rgba(199, 146, 255, 0.55);
+}
+
+body {
+  margin: 0;
+  background: var(--void);
+  color: var(--paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:focus-visible {
+  outline: 2px solid var(--flare);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
