@@ -181,7 +181,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Dependency Review
-      uses: actions/dependency-review-action@v4
+      uses: actions/dependency-review-action@v5
 
   # Release (on main push with version tags)
   release:
